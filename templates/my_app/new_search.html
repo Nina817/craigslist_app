@@ -1,52 +1,70 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
-
+{%  load static %}
         <h2 style="text-align: center;">{{ search | title }}</h2>
-
-            <div class="row">
+    <div class="row">
+        {% for post in final_postings %}
                 <div class="col s4">
                     <div class="card">
+{#                        style="min-height: 390px;"#}
                         <div class="card-image">
-                            <a href="/"><img src="https://i.natgeofe.com/k/a09360a8-bbe1-45fd-b337-b26a72f07132/cane-toad-grass_4x3.jpg" alt=""></a>
+                            <a href="{{ post.1 }}"><img src="{{ post.3}}" alt=""></a>
                         </div>
                         <div class="card-content">
-                            <p>TEST</p>
+                            <p>{{ post.0 }}</p>
                         </div>
                         <div class="card-action">
-                            <a href="/">View listing: Price TEST PRICE</a>
+                            <a href=" {{ post.1 }}">View listing: Price {{ post.2 }}</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="/"><img src="https://static.wikia.nocookie.net/diceblock/images/c/c0/Toad_-_Mario_Party_10.png/revision/latest?cb=20160705234601" alt=""></a>
-                        </div>
-                        <div class="card-content">
-                            <p>TEST</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="/">View listing: Price TEST PRICE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="/"><img src="https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2013/02/thumb_720_450_870.jpg" alt=""></a>
-                        </div>
-                        <div class="card-content">
-                            <p>TEST</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="/">View listing: Price TEST PRICE</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        {% endfor %}
+    </div>
+{#            <div class="row">#}
+{#                <div class="col s4">#}
+{#                    <div class="card">#}
+{#                        <div class="card-image">#}
+{#                            <a href="/"><img src="https://i.natgeofe.com/k/a09360a8-bbe1-45fd-b337-b26a72f07132/cane-toad-grass_4x3.jpg" alt=""></a>#}
+{#                        </div>#}
+{#                        <div class="card-content">#}
+{#                            <p>TEST</p>#}
+{#                        </div>#}
+{#                        <div class="card-action">#}
+{#                            <a href="/">View listing: Price TEST PRICE</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <div class="col s4">#}
+{#                    <div class="card">#}
+{#                        <div class="card-image">#}
+{#                            <a href="/"><img src="https://static.wikia.nocookie.net/diceblock/images/c/c0/Toad_-_Mario_Party_10.png/revision/latest?cb=20160705234601" alt=""></a>#}
+{#                        </div>#}
+{#                        <div class="card-content">#}
+{#                            <p>TEST</p>#}
+{#                        </div>#}
+{#                        <div class="card-action">#}
+{#                            <a href="/">View listing: Price TEST PRICE</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <div class="col s4">#}
+{#                    <div class="card">#}
+{#                        <div class="card-image">#}
+{#                            <a href="/"><img src="https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2013/02/thumb_720_450_870.jpg" alt=""></a>#}
+{#                        </div>#}
+{#                        <div class="card-content">#}
+{#                            <p>TEST</p>#}
+{#                        </div>#}
+{#                        <div class="card-action">#}
+{#                            <a href="/">View listing: Price TEST PRICE</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
 
 
 {% endblock %}
