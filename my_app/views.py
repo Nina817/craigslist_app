@@ -3,16 +3,20 @@ import requests
 from . import models
 from requests.compat import quote_plus
 from bs4 import BeautifulSoup
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 BASE_CRAIGSLIST_URL = 'https://london.craigslist.org/d/housing/search/hhh?query={}'
 BASE_IMAGE_URL = "https://images.craigslist.org/{}_600x450.jpg"
 
 
+@login_required
 def home(request):
     return render(request, 'base.html')
 
 
+@login_required
 def new_search(request):
     search = request.POST.get('search')
     models.Search.objects.create(search=search)
@@ -51,4 +55,4 @@ def new_search(request):
     }
 
     # print(len(final_postings))
-    return render(request, 'my_app/new_search.html', stuff_for_frontend)
+    return render(request, 'my_app/index.html', stuff_for_frontend)

@@ -10,7 +10,8 @@
 
 {#{%  load staticfiles %}#}
 {%  load static %}
-
+{#{% load account %}#}
+{#{% user_display user as user_display %}#}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,9 +28,17 @@
     <nav>
         <div class="container nav-wrapper">
             <a href="/" class="brand-logo">House and Flat Search App</a>
+{#            {{ user_display }}#}
             <ul id="nav-mobile" class="right">
                 <li><a href="/">Home</a></li>
-            </ul>
+            {% if user.is_authenticated %}
+
+                <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+                <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+
+
+            {% endif %}
+          </ul>
         </div>
     </nav>
 
@@ -64,7 +73,7 @@
             </div>
         </div>
 
-       <form action="{% url 'new_search'  %}" method="post">
+       <form action="{% url 'my_app:new_search'  %}" method="post">
             {%  csrf_token %}
             <input type="text" name="search" placeholder="search">
             <button class="btn waves-effect waves-light" type="submit" name="action">Submit
