@@ -11,12 +11,12 @@ BASE_CRAIGSLIST_URL = 'https://london.craigslist.org/d/housing/search/hhh?query=
 BASE_IMAGE_URL = "https://images.craigslist.org/{}_600x450.jpg"
 
 
-@login_required
+# @login_required
 def home(request):
     return render(request, 'base.html')
 
 
-@login_required
+# @login_required
 def new_search(request):
     search = request.POST.get('search')
     models.Search.objects.create(search=search)

@@ -9,29 +9,31 @@
   <body>
     {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-
-    <div>
-      <strong>Menu:</strong>
-      <ul>
+    <nav class="navbar navbar-dark bg-primary">
+{#      <strong>Menu:</strong>#}
+      <ul class="list-group d-flex flex-row">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        <li class="list-group-item"><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li class="ml-2 list-group-item"><a href="{% url 'account_logout' %}">Sign Out</a></li>
         {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        <li class="ml-2 list-group-item"><a href="{% url 'account_login' %}">Sign In</a></li>
+        <li class="ml-2 list-group-item"><a href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
+        <li class="ml-2 list-group-item"><a href="{% url 'my_app:home' %}">Home</a></li>
       </ul>
-    </div>
+    </nav>
+
+{#    {% if messages %}#}
+{#        <div>#}
+{#          <strong>Messages:</strong>#}
+{#          <ul>#}
+{#            {% for message in messages %}#}
+{#            <li>{{message}}</li>#}
+{#            {% endfor %}#}
+{#          </ul>#}
+{#        </div>#}
+{#    {% endif %}#}
+
     {% block content %}
     {% endblock %}
     {% endblock %}
